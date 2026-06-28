@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from .decision_rights import recommend_decision_level
+from .departments import DepartmentSpec, department_complexity
 from .maturity import score_capabilities
 from .memory_map import recommend_memory_types
 from .opportunity import OpportunityFactors, opportunity_band, score_agent_opportunity
@@ -72,6 +73,20 @@ def _decision_rights(args: argparse.Namespace) -> int:
     return 0
 
 
+def _department(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    spec = DepartmentSpec(
+        name=str(data["name"]),
+        recommended_agents=tuple(data["recommended_agents"]),
+        core_workflows=tuple(data["core_workflows"]),
+        memory_types=tuple(data["memory_types"]),
+        governance_level=str(data["governance_level"]),
+        metrics=tuple(data["metrics"]),
+    )
+    print(json.dumps({"department": spec.name, "complexity": department_complexity(spec)}, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -113,6 +128,10 @@ def build_parser() -> argparse.ArgumentParser:
     decision.add_argument("--ambiguity", type=int, required=True)
     decision.add_argument("--confidence", type=int, required=True)
     decision.set_defaults(func=_decision_rights)
+
+    department = sub.add_parser("department", help="score department redesign complexity")
+    department.add_argument("input", help="path to department spec JSON")
+    department.set_defaults(func=_department)
 
     return parser
 
