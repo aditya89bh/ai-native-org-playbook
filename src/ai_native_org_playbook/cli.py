@@ -14,6 +14,7 @@ from .memory_map import recommend_memory_types
 from .opportunity import OpportunityFactors, opportunity_band, score_agent_opportunity
 from .pilot import PilotCandidate, pilot_band, pilot_score
 from .readiness import readiness_band, readiness_score
+from .workflows import WorkflowSpec, workflow_agent_surface_area, workflow_governance_load
 
 
 def _score_maturity(args: argparse.Namespace) -> int:
@@ -105,6 +106,32 @@ def _agent_role(args: argparse.Namespace) -> int:
     return 0
 
 
+def _workflow(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    spec = WorkflowSpec(
+        name=str(data["name"]),
+        department=str(data["department"]),
+        human_steps=tuple(data["human_steps"]),
+        agent_steps=tuple(data["agent_steps"]),
+        shared_steps=tuple(data["shared_steps"]),
+        memory_events=tuple(data["memory_events"]),
+        governance_points=tuple(data["governance_points"]),
+        metrics=tuple(data["metrics"]),
+        risks=tuple(data["risks"]),
+    )
+    print(
+        json.dumps(
+            {
+                "workflow": spec.name,
+                "agent_surface_area": workflow_agent_surface_area(spec),
+                "governance_load": workflow_governance_load(spec),
+            },
+            indent=2,
+        )
+    )
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -154,6 +181,10 @@ def build_parser() -> argparse.ArgumentParser:
     role = sub.add_parser("agent-role", help="score agent role operational depth")
     role.add_argument("input", help="path to agent role spec JSON")
     role.set_defaults(func=_agent_role)
+
+    workflow = sub.add_parser("workflow", help="score workflow agent surface area and governance load")
+    workflow.add_argument("input", help="path to workflow spec JSON")
+    workflow.set_defaults(func=_workflow)
 
     return parser
 
