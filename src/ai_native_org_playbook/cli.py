@@ -6,6 +6,7 @@ import argparse
 import json
 from pathlib import Path
 
+from .agent_roles import AgentRoleSpec, role_operational_depth
 from .decision_rights import recommend_decision_level
 from .departments import DepartmentSpec, department_complexity
 from .maturity import score_capabilities
@@ -87,6 +88,23 @@ def _department(args: argparse.Namespace) -> int:
     return 0
 
 
+def _agent_role(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    spec = AgentRoleSpec(
+        name=str(data["name"]),
+        responsibilities=tuple(data["responsibilities"]),
+        inputs=tuple(data["inputs"]),
+        outputs=tuple(data["outputs"]),
+        permissions=tuple(data["permissions"]),
+        memory_scope=tuple(data["memory_scope"]),
+        escalation_triggers=tuple(data["escalation_triggers"]),
+        evaluation_metrics=tuple(data["evaluation_metrics"]),
+        department_fit=tuple(data["department_fit"]),
+    )
+    print(json.dumps({"agent_role": spec.name, "operational_depth": role_operational_depth(spec)}, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -132,6 +150,10 @@ def build_parser() -> argparse.ArgumentParser:
     department = sub.add_parser("department", help="score department redesign complexity")
     department.add_argument("input", help="path to department spec JSON")
     department.set_defaults(func=_department)
+
+    role = sub.add_parser("agent-role", help="score agent role operational depth")
+    role.add_argument("input", help="path to agent role spec JSON")
+    role.set_defaults(func=_agent_role)
 
     return parser
 
