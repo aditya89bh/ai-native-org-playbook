@@ -22,7 +22,7 @@ Most companies will not become AI-native by adding chatbots to existing workflow
 ```bash
 git clone https://github.com/aditya89bh/ai-native-org-playbook.git
 cd ai-native-org-playbook
-python -m pip install -e ".[dev]"
+python -m pip install -e ".[dev,docs]"
 pytest
 ```
 
@@ -43,6 +43,20 @@ Generate a roadmap:
 ```bash
 ai-org-playbook roadmap --readiness-score 3.4 --governance-risk 45
 ```
+
+## Validation
+
+Release validation should pass:
+
+```bash
+ruff check .
+mypy src
+pytest
+mkdocs build --strict
+python -m build
+```
+
+See `VALIDATION.md` and `docs/release_checklist.md` before tagging a release.
 
 ## Repository map
 
@@ -72,6 +86,7 @@ ai-org-playbook roadmap --readiness-score 3.4 --governance-risk 45
 6. Simulators and examples
 7. Interactive tools and calculators
 8. Documentation site and product polish
+9. Validation and release preparation
 
 ## Who this is for
 
@@ -87,4 +102,4 @@ Do not start with automation. Start with work: workflows, decisions, memory, gov
 
 ## Status
 
-Active build toward a polished v0.1.0 release.
+v0.1.0 release candidate. Tag only after CI and docs checks are green on `main`.
