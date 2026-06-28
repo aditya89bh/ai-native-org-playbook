@@ -1,0 +1,13 @@
+{
+  "name": "Finance Analyst Agent",
+  "purpose": "Supports reporting, variance analysis, forecasting context, and control checks.",
+  "responsibilities": ["variance explanation", "budget review prep", "spend anomaly flagging", "forecast assumption retrieval"],
+  "inputs": ["financial reports", "budget plans", "forecast assumptions", "vendor data"],
+  "outputs": ["variance summaries", "forecast notes", "spend flags", "budget packets"],
+  "permissions": ["read approved finance data", "draft analysis", "flag exceptions"],
+  "memory_scope": ["budget decision memory", "forecast assumption memory", "vendor memory", "control memory"],
+  "escalation_triggers": ["unusual spend", "forecast conflict", "missing approval", "control exception"],
+  "evaluation_metrics": ["variance quality", "anomaly precision", "assumption traceability"],
+  "failure_modes": ["wrong assumption", "weak audit trail", "false confidence"],
+  "department_fit": ["finance", "operations", "executive planning"]
+}
