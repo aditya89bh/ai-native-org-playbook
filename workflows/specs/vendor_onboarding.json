@@ -1,0 +1,11 @@
+{
+  "name": "vendor_onboarding",
+  "department": "operations",
+  "human_steps": ["approve vendor selection", "negotiate terms", "approve financial commitment", "own risk exceptions"],
+  "agent_steps": ["prepare vendor packet", "track checklist", "retrieve policies", "flag missing documents"],
+  "shared_steps": ["vendor review", "contract review", "finance setup", "operational handoff"],
+  "memory_events": ["vendor profile created", "risk review recorded", "contract status logged", "approval captured"],
+  "governance_points": ["vendor selection approval", "contract approval", "payment setup approval"],
+  "metrics": ["onboarding cycle time", "checklist completion", "approval latency", "handoff quality"],
+  "risks": ["missing approvals", "weak risk review", "vendor context loss"]
+}
