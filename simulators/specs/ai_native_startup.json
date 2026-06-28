@@ -1,0 +1,10 @@
+{
+  "name": "ai_native_startup",
+  "organization_type": "b2b_saas_startup",
+  "departments": ["sales", "marketing", "product", "engineering", "customer_support", "operations"],
+  "agents": ["Research Agent", "Memory Agent", "Sales Research Agent", "Product Feedback Agent", "Workflow Orchestration Agent", "Chief of Staff Agent"],
+  "workflows": ["sales_pipeline", "product_discovery", "pr_review", "customer_onboarding", "meeting_management"],
+  "memory_types": ["customer memory", "product decision memory", "meeting memory", "incident memory", "sales account memory"],
+  "governance_rules": ["customer message review", "roadmap approval", "production change approval", "founder commitment approval"],
+  "metrics": ["customer response time", "discovery cycle time", "review cycle time", "time to value", "decision reuse"]
+}
