@@ -13,6 +13,7 @@ theme:
 nav:
   - Home: docs/index.md
   - Quickstart: docs/quickstart.md
+  - Tutorial Path: docs/tutorial_path.md
   - Frameworks: docs/frameworks.md
   - Departments: docs/departments.md
   - Agent Roles: docs/agent_roles.md
@@ -20,10 +21,12 @@ nav:
   - Memory and Governance: docs/memory_governance.md
   - Simulators: docs/simulators.md
   - Tools: docs/tools.md
-  - Consulting Guide: docs/consulting_guide.md
-  - Examples Gallery: docs/examples_gallery.md
   - CLI Reference: docs/cli_reference.md
+  - Consulting Guide: docs/consulting_guide.md
+  - Organization Assessment: docs/organization_assessment.md
+  - Examples Gallery: docs/examples_gallery.md
   - Release Checklist: docs/release_checklist.md
+  - Limitations: docs/limitations.md
 
 markdown_extensions:
   - admonition
