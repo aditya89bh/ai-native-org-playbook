@@ -1,0 +1,31 @@
+{
+  "name": "marketing",
+  "recommended_agents": [
+    "Market Research Agent",
+    "Content Operations Agent",
+    "Campaign Analyst Agent",
+    "Memory Agent",
+    "Review Agent"
+  ],
+  "core_workflows": [
+    "campaign planning",
+    "content production",
+    "launch review",
+    "performance reporting",
+    "experiment retrospective"
+  ],
+  "memory_types": [
+    "campaign memory",
+    "customer signal memory",
+    "positioning memory",
+    "experiment memory",
+    "decision memory"
+  ],
+  "governance_level": "medium",
+  "metrics": [
+    "campaign cycle time",
+    "content throughput",
+    "experiment reuse",
+    "message consistency"
+  ]
+}
