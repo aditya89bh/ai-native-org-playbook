@@ -1,0 +1,31 @@
+{
+  "name": "legal_compliance",
+  "recommended_agents": [
+    "Legal Intake Agent",
+    "Contract Review Agent",
+    "Policy Retrieval Agent",
+    "Obligation Tracking Agent",
+    "Compliance Evidence Agent"
+  ],
+  "core_workflows": [
+    "contract review",
+    "policy review",
+    "compliance evidence collection",
+    "risk assessment",
+    "obligation tracking"
+  ],
+  "memory_types": [
+    "contract memory",
+    "policy memory",
+    "risk memory",
+    "obligation memory",
+    "decision memory"
+  ],
+  "governance_level": "high",
+  "metrics": [
+    "review cycle time",
+    "clause retrieval accuracy",
+    "obligation tracking completeness",
+    "escalation quality"
+  ]
+}
