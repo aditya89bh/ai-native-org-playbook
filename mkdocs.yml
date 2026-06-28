@@ -1,0 +1,33 @@
+site_name: AI Native Organization Playbook
+site_description: Practical framework for designing AI-native organizations, workflows, agents, memory, and governance.
+repo_url: https://github.com/aditya89bh/ai-native-org-playbook
+repo_name: aditya89bh/ai-native-org-playbook
+
+theme:
+  name: material
+  features:
+    - navigation.sections
+    - navigation.expand
+    - content.code.copy
+
+nav:
+  - Home: docs/index.md
+  - Quickstart: docs/quickstart.md
+  - Frameworks: docs/frameworks.md
+  - Departments: docs/departments.md
+  - Agent Roles: docs/agent_roles.md
+  - Workflows: docs/workflows.md
+  - Memory and Governance: docs/memory_governance.md
+  - Simulators: docs/simulators.md
+  - Tools: docs/tools.md
+  - Consulting Guide: docs/consulting_guide.md
+  - Examples Gallery: docs/examples_gallery.md
+  - CLI Reference: docs/cli_reference.md
+  - Release Checklist: docs/release_checklist.md
+
+markdown_extensions:
+  - admonition
+  - toc:
+      permalink: true
+  - tables
+  - fenced_code
