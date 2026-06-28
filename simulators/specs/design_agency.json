@@ -1,0 +1,10 @@
+{
+  "name": "design_agency",
+  "organization_type": "creative_services",
+  "departments": ["design", "research", "sales", "operations", "finance", "client_delivery"],
+  "agents": ["Design Review Agent", "Research Agent", "Knowledge Agent", "Planning Agent", "Chief of Staff Agent", "Analytics Agent"],
+  "workflows": ["product_discovery", "meeting_management", "knowledge_management", "sales_pipeline", "budget_planning"],
+  "memory_types": ["research memory", "design decision memory", "client memory", "project memory", "component memory"],
+  "governance_rules": ["creative lead approval", "client recommendation review", "source traceability", "brand-sensitive approval"],
+  "metrics": ["research reuse", "design cycle time", "handoff rework", "client follow up quality", "proposal cycle time"]
+}
