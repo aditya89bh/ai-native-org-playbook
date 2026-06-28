@@ -1,0 +1,11 @@
+{
+  "name": "hiring_pipeline",
+  "department": "hr",
+  "human_steps": ["define role requirements", "conduct interviews", "make final hiring decision", "approve offer"],
+  "agent_steps": ["prepare candidate packets", "track stage progress", "summarize interview notes", "check rubric completeness"],
+  "shared_steps": ["interview planning", "feedback review", "hiring debrief", "onboarding handoff"],
+  "memory_events": ["role requirement recorded", "candidate stage updated", "interview feedback summarized", "hiring decision logged"],
+  "governance_points": ["candidate advancement approval", "compensation approval", "final hiring decision"],
+  "metrics": ["time to screen", "time to schedule", "packet completeness", "candidate experience"],
+  "risks": ["bias amplification", "privacy leakage", "incomplete evidence"]
+}
