@@ -1,0 +1,31 @@
+{
+  "name": "research",
+  "recommended_agents": [
+    "Source Discovery Agent",
+    "Evidence Synthesis Agent",
+    "Citation Agent",
+    "Interview Analysis Agent",
+    "Research Memory Agent"
+  ],
+  "core_workflows": [
+    "research brief creation",
+    "evidence review",
+    "interview synthesis",
+    "competitive research",
+    "strategic insight generation"
+  ],
+  "memory_types": [
+    "source memory",
+    "evidence memory",
+    "hypothesis memory",
+    "interview memory",
+    "decision memory"
+  ],
+  "governance_level": "medium",
+  "metrics": [
+    "research cycle time",
+    "source quality",
+    "evidence reuse",
+    "citation accuracy"
+  ]
+}
