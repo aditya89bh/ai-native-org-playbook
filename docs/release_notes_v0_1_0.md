@@ -1,6 +1,6 @@
-# v0.1.0 Release Notes Draft
+# v0.1.0 Release Notes
 
-`v0.1.0` will mark the first usable release of the AI Native Organization Playbook.
+`v0.1.0` is the first usable release candidate of the AI Native Organization Playbook.
 
 ## Highlights
 
