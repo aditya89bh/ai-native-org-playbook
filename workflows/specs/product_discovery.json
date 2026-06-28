@@ -1,0 +1,11 @@
+{
+  "name": "product_discovery",
+  "department": "product",
+  "human_steps": ["define discovery goals", "conduct interviews", "interpret evidence", "prioritize opportunities"],
+  "agent_steps": ["cluster feedback", "summarize interviews", "retrieve roadmap memory", "draft opportunity briefs"],
+  "shared_steps": ["hypothesis definition", "evidence review", "opportunity sizing", "experiment planning"],
+  "memory_events": ["hypothesis recorded", "evidence linked", "customer signal captured", "experiment outcome saved"],
+  "governance_points": ["roadmap change approval", "customer commitment approval", "public claim approval"],
+  "metrics": ["discovery cycle time", "evidence quality", "decision reuse", "learning rate"],
+  "risks": ["summary mistaken for insight", "loud feedback overweighted", "weak evidence traceability"]
+}
