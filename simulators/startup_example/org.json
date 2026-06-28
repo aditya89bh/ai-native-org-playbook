@@ -1,0 +1,21 @@
+{
+  "name": "AI Native Startup Example",
+  "departments": [
+    "sales",
+    "marketing",
+    "engineering",
+    "operations"
+  ],
+  "agents": [
+    "research_agent",
+    "memory_agent",
+    "planning_agent",
+    "review_agent"
+  ],
+  "workflows": [
+    "customer_onboarding",
+    "product_discovery",
+    "weekly_planning"
+  ],
+  "governance_level": "draft_and_approval"
+}
