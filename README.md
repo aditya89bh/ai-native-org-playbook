@@ -2,7 +2,11 @@
 
 A practical open-source framework for redesigning organizations where humans and AI agents work together.
 
-This repository is not a blog collection. It is intended to become a reusable operating model with frameworks, templates, simulations, calculators, governance patterns, and implementation examples.
+This repository is not a blog collection. It is a reusable operating model with frameworks, department playbooks, agent role specs, workflow redesigns, memory architecture, governance patterns, simulators, calculators, templates, and reports.
+
+## Core premise
+
+Most companies will not become AI-native by adding chatbots to existing workflows. They become AI-native when their workflows, decision rights, knowledge systems, governance, and metrics are redesigned around agents as first-class operating participants.
 
 ## What this repo helps you do
 
@@ -13,9 +17,32 @@ This repository is not a blog collection. It is intended to become a reusable op
 - Simulate before-and-after operating models.
 - Create transformation roadmaps from pilot to scale.
 
-## Core premise
+## Quickstart
 
-Most companies will not become AI-native by adding chatbots to existing workflows. They become AI-native when their workflows, decision rights, knowledge systems, governance, and metrics are redesigned around agents as first-class operating participants.
+```bash
+git clone https://github.com/aditya89bh/ai-native-org-playbook.git
+cd ai-native-org-playbook
+python -m pip install -e ".[dev]"
+pytest
+```
+
+Run a readiness assessment:
+
+```bash
+ai-org-playbook readiness examples/readiness_scores.json
+```
+
+Score a workflow:
+
+```bash
+ai-org-playbook workflow workflows/specs/customer_onboarding.json
+```
+
+Generate a roadmap:
+
+```bash
+ai-org-playbook roadmap --readiness-score 3.4 --governance-risk 45
+```
 
 ## Repository map
 
@@ -23,20 +50,41 @@ Most companies will not become AI-native by adding chatbots to existing workflow
 | --- | --- |
 | `frameworks/` | Conceptual models and design methods |
 | `departments/` | AI-native redesign guides by function |
-| `agent_roles/` | Reusable agent job descriptions and specs |
-| `workflows/` | Before/after workflow redesigns |
-| `memory/` | Organizational memory architecture |
+| `agent_roles/` | Reusable agent role descriptions and JSON specs |
+| `workflows/` | Before/after workflow redesigns and JSON specs |
+| `memory/` | Organizational memory schemas, correction, forgetting, retention |
 | `governance/` | Risk, approvals, audit, permissions, accountability |
 | `metrics/` | KPIs for humans, agents, workflows, and organizations |
 | `simulators/` | Example companies and scenario simulations |
+| `tools/` | CLI calculator references and report generation docs |
 | `templates/` | Canvases, checklists, worksheets, policy templates |
+| `reports/` | Sample generated reports |
 | `src/ai_native_org_playbook/` | CLI, calculators, generators, and validation helpers |
-| `tests/` | Test coverage for tools and examples |
+| `tests/` | Test coverage for reusable tooling |
 
-## End state
+## Current layers
 
-The target end state is a 300 to 350 commit repository with a polished documentation site, reusable templates, executable calculators, sample simulations, and evidence that the material works as a consulting and implementation toolkit.
+1. Frameworks
+2. Department playbooks
+3. Agent role library
+4. Workflow library
+5. Memory and governance controls
+6. Simulators and examples
+7. Interactive tools and calculators
+8. Documentation site and product polish
+
+## Who this is for
+
+- Founders redesigning operations around agents
+- Consultants building AI transformation assessments
+- Product and ops leaders selecting agent pilots
+- Engineering teams designing internal agent workflows
+- Researchers studying human-agent organizations
+
+## Design rule
+
+Do not start with automation. Start with work: workflows, decisions, memory, governance, and measurable outcomes.
 
 ## Status
 
-Phase 0 has started: repository foundation, initial framework, templates, CLI, tests, and roadmap.
+Active build toward a polished v0.1.0 release.
