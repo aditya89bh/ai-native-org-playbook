@@ -1,0 +1,10 @@
+{
+  "correction_id": "corr_001",
+  "original_memory_id": "mem_decision_001",
+  "correction_owner": "product_lead",
+  "reason": "New customer evidence changed the prioritization rationale.",
+  "corrected_statement": "Onboarding analytics remains high priority, but dashboard customization is required for enterprise expansion accounts.",
+  "evidence": ["enterprise customer interview", "sales escalation note"],
+  "timestamp": "2026-01-22T12:00:00Z",
+  "future_retrieval_rule": "prefer_corrected_memory"
+}
