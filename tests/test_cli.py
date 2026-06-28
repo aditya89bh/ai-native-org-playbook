@@ -12,3 +12,4 @@ def test_cli_has_phase_commands() -> None:
     assert "decision-rights" in help_text
     assert "department" in help_text
     assert "agent-role" in help_text
+    assert "workflow" in help_text
