@@ -1,0 +1,9 @@
+{
+  "workflow_clarity": 4,
+  "knowledge_quality": 3,
+  "agent_readiness": 3,
+  "governance": 2,
+  "memory_design": 3,
+  "measurement": 2,
+  "change_capacity": 4
+}
