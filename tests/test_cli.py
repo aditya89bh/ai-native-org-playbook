@@ -15,3 +15,4 @@ def test_cli_has_phase_commands() -> None:
     assert "department" in help_text
     assert "agent-role" in help_text
     assert "workflow" in help_text
+    assert "simulator" in help_text
