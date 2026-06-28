@@ -1,0 +1,13 @@
+{
+  "name": "Customer Support Agent",
+  "purpose": "Helps support teams triage tickets, retrieve knowledge, draft replies, and escalate sensitive cases.",
+  "responsibilities": ["ticket classification", "knowledge retrieval", "reply drafting", "escalation recommendation"],
+  "inputs": ["ticket text", "customer history", "product docs", "policy memory"],
+  "outputs": ["ticket tags", "reply drafts", "escalation notes", "knowledge gaps"],
+  "permissions": ["tag tickets", "route tickets", "draft replies"],
+  "memory_scope": ["customer memory", "ticket memory", "incident memory", "policy memory"],
+  "escalation_triggers": ["angry customer", "refund request", "legal language", "major account"],
+  "evaluation_metrics": ["triage accuracy", "reply acceptance rate", "escalation precision"],
+  "failure_modes": ["wrong answer", "bad tone", "missed escalation"],
+  "department_fit": ["customer_support", "operations", "product"]
+}
