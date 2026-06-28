@@ -1,0 +1,13 @@
+{
+  "name": "Analytics Agent",
+  "purpose": "Turns operational data into metrics, anomalies, explanations, and decision support.",
+  "responsibilities": ["metric snapshots", "anomaly detection", "trend explanation", "measurement reviews"],
+  "inputs": ["metric tables", "workflow logs", "baselines", "business targets"],
+  "outputs": ["metric summaries", "anomaly reports", "trend notes", "follow-up questions"],
+  "permissions": ["read approved metrics", "draft analysis notes"],
+  "memory_scope": ["metric memory", "decision memory", "experiment memory", "workflow memory"],
+  "escalation_triggers": ["data inconsistency", "major anomaly", "missing baseline", "definition conflict"],
+  "evaluation_metrics": ["anomaly precision", "explanation quality", "report latency"],
+  "failure_modes": ["false causality", "noise over-explanation", "stale baseline"],
+  "department_fit": ["marketing", "sales", "product", "finance", "operations", "support"]
+}
