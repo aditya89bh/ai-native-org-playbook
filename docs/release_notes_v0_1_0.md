@@ -14,6 +14,15 @@
 - Markdown report generation
 - MkDocs documentation site
 
+## Validation added before release
+
+- CI validates lint, type checking, tests, and package build
+- Docs workflow validates MkDocs strict build
+- JSON specs have smoke coverage
+- MkDocs navigation targets are tested
+- CLI execution smoke tests cover readiness, workflow, and roadmap paths
+- Release checklist and validation report document release gates
+
 ## Intended users
 
 - Founders
@@ -28,3 +37,7 @@
 - Simulators are illustrative
 - Compliance rules require domain adaptation
 - Human accountability is required for real deployment
+
+## Release condition
+
+Tag only after CI and docs checks are green on `main`.
