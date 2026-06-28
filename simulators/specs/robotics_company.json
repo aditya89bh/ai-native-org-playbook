@@ -1,0 +1,10 @@
+{
+  "name": "robotics_company",
+  "organization_type": "robotics",
+  "departments": ["engineering", "product", "operations", "customer_support", "sales", "research"],
+  "agents": ["Incident Agent", "Product Feedback Agent", "Workflow Orchestration Agent", "Knowledge Agent", "Research Agent", "Chief of Staff Agent"],
+  "workflows": ["pr_review", "incident_response", "customer_onboarding", "product_discovery", "knowledge_management"],
+  "memory_types": ["field incident memory", "customer deployment memory", "architecture decision memory", "product feedback memory", "support ticket memory"],
+  "governance_rules": ["engineering approval", "customer commitment approval", "strict safety audit", "product approval"],
+  "metrics": ["incident resolution time", "field learning reuse", "customer onboarding quality", "review cycle time", "feedback traceability"]
+}
