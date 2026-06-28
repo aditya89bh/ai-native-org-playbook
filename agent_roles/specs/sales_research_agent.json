@@ -1,0 +1,13 @@
+{
+  "name": "Sales Research Agent",
+  "purpose": "Prepares account and prospect context for sales conversations.",
+  "responsibilities": ["account research", "stakeholder summary", "pain point detection", "discovery prep"],
+  "inputs": ["crm records", "public company info", "prior conversations", "sales playbooks"],
+  "outputs": ["account briefs", "stakeholder summaries", "discovery questions", "risk notes"],
+  "permissions": ["read crm", "read approved external sources", "draft account notes"],
+  "memory_scope": ["account memory", "conversation memory", "objection memory", "proposal memory"],
+  "escalation_triggers": ["unsupported claim", "conflicting account data", "strategic account", "pricing question"],
+  "evaluation_metrics": ["brief usefulness", "source accuracy", "prep time reduction"],
+  "failure_modes": ["stale account context", "generic research", "unsupported claims"],
+  "department_fit": ["sales", "account_management", "customer_success"]
+}
