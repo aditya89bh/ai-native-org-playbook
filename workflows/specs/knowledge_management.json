@@ -1,0 +1,11 @@
+{
+  "name": "knowledge_management",
+  "department": "operations",
+  "human_steps": ["own canonical knowledge", "approve sop changes", "resolve conflicting guidance", "define standards"],
+  "agent_steps": ["retrieve docs", "flag outdated content", "suggest updates", "identify gaps"],
+  "shared_steps": ["sop review", "knowledge cleanup", "decision documentation", "policy update review"],
+  "memory_events": ["knowledge asset created", "source linked", "update suggested", "owner approval recorded"],
+  "governance_points": ["canonical content approval", "policy change approval", "sensitive material review"],
+  "metrics": ["retrieval relevance", "source freshness", "duplicate reduction", "knowledge reuse"],
+  "risks": ["stale answers", "knowledge clutter", "unsupported guidance"]
+}
