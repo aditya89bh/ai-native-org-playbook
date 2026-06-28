@@ -1,0 +1,31 @@
+{
+  "name": "design",
+  "recommended_agents": [
+    "Research Synthesis Agent",
+    "Design Review Agent",
+    "Component Librarian Agent",
+    "Accessibility Agent",
+    "Memory Agent"
+  ],
+  "core_workflows": [
+    "user research synthesis",
+    "concept exploration",
+    "design critique",
+    "design system maintenance",
+    "handoff to engineering"
+  ],
+  "memory_types": [
+    "research memory",
+    "design decision memory",
+    "component memory",
+    "brand memory",
+    "usability issue memory"
+  ],
+  "governance_level": "medium",
+  "metrics": [
+    "design cycle time",
+    "research reuse",
+    "component reuse",
+    "handoff rework"
+  ]
+}
