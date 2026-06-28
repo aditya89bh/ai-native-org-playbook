@@ -1,0 +1,45 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ai-native-org-playbook"
+version = "0.1.0"
+description = "Tools and templates for designing AI-native organizations."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [{name = "Aditya Bhatia"}]
+keywords = ["ai agents", "organization design", "workflow automation", "governance", "organizational memory"]
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "ruff>=0.5.0",
+  "mypy>=1.10",
+]
+docs = [
+  "mkdocs>=1.6",
+  "mkdocs-material>=9.5",
+]
+
+[project.scripts]
+ai-org-playbook = "ai_native_org_playbook.cli:main"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+addopts = "-q"
+testpaths = ["tests"]
+pythonpath = ["src"]
