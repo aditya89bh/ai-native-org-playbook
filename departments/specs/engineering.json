@@ -1,0 +1,31 @@
+{
+  "name": "engineering",
+  "recommended_agents": [
+    "Issue Triage Agent",
+    "Code Review Agent",
+    "Test Generation Agent",
+    "Incident Memory Agent",
+    "Release Coordination Agent"
+  ],
+  "core_workflows": [
+    "sprint planning",
+    "issue triage",
+    "pull request review",
+    "incident response",
+    "release management"
+  ],
+  "memory_types": [
+    "architecture decision memory",
+    "incident memory",
+    "release memory",
+    "code review memory",
+    "technical debt memory"
+  ],
+  "governance_level": "high",
+  "metrics": [
+    "lead time for changes",
+    "review cycle time",
+    "incident resolution time",
+    "defect escape rate"
+  ]
+}
