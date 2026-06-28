@@ -5,7 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
-from typing import Any
+from typing import Any, cast
 
 from .agent_roles import AgentRoleSpec, role_operational_depth
 from .assessment_reports import build_roadmap_report
@@ -21,15 +21,17 @@ from .readiness import readiness_band, readiness_score
 from .simulators import SimulatorSpec, simulator_complexity, simulator_readiness_hint
 from .workflows import WorkflowSpec, workflow_agent_surface_area, workflow_governance_load
 
+JsonObject = dict[str, Any]
 
-def _load_json(path: str) -> dict[str, Any]:
+
+def _load_json(path: str) -> JsonObject:
     data = json.loads(Path(path).read_text(encoding="utf-8"))
     if not isinstance(data, dict):
         raise ValueError("expected a JSON object")
-    return data
+    return cast(JsonObject, data)
 
 
-def _print_json(payload: dict[str, Any]) -> None:
+def _print_json(payload: JsonObject) -> None:
     print(json.dumps(payload, indent=2))
 
 
