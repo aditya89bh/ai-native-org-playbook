@@ -1,0 +1,15 @@
+{
+  "event_id": "mem_meeting_001",
+  "timestamp": "2026-01-16T09:00:00Z",
+  "source": "weekly_operating_review",
+  "actor": "chief_of_staff_agent",
+  "department": "operations",
+  "workflow": "meeting_management",
+  "memory_type": "meeting",
+  "summary": "Leadership agreed to pilot AI-assisted customer onboarding for the next two enterprise customers.",
+  "evidence": ["meeting notes", "decision log"],
+  "confidence": 0.91,
+  "retention_tier": "operational",
+  "access_scope": "project",
+  "correction_status": "active"
+}
