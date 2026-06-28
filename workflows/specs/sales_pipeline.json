@@ -1,0 +1,11 @@
+{
+  "name": "sales_pipeline",
+  "department": "sales",
+  "human_steps": ["build relationships", "run discovery", "negotiate terms", "approve pricing"],
+  "agent_steps": ["enrich account records", "draft discovery briefs", "update crm fields", "summarize meetings"],
+  "shared_steps": ["proposal preparation", "pipeline review", "account handoff", "win loss review"],
+  "memory_events": ["account context updated", "discovery notes captured", "objections recorded", "proposal rationale logged"],
+  "governance_points": ["pricing approval", "contract approval", "external claim approval"],
+  "metrics": ["lead response time", "crm completeness", "follow up delay", "pipeline accuracy"],
+  "risks": ["robotic outreach", "unsupported claims", "crm pollution"]
+}
