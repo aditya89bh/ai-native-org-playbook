@@ -16,6 +16,7 @@ from .memory_policy import retention_days, should_require_review
 from .opportunity import OpportunityFactors, opportunity_band, score_agent_opportunity
 from .pilot import PilotCandidate, pilot_band, pilot_score
 from .readiness import readiness_band, readiness_score
+from .simulators import SimulatorSpec, simulator_complexity, simulator_readiness_hint
 from .workflows import WorkflowSpec, workflow_agent_surface_area, workflow_governance_load
 
 
@@ -147,6 +148,22 @@ def _workflow(args: argparse.Namespace) -> int:
     return 0
 
 
+def _simulator(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    spec = SimulatorSpec(
+        name=str(data["name"]),
+        organization_type=str(data["organization_type"]),
+        departments=tuple(data["departments"]),
+        agents=tuple(data["agents"]),
+        workflows=tuple(data["workflows"]),
+        memory_types=tuple(data["memory_types"]),
+        governance_rules=tuple(data["governance_rules"]),
+        metrics=tuple(data["metrics"]),
+    )
+    print(json.dumps({"simulator": spec.name, "complexity": simulator_complexity(spec), "readiness_hint": simulator_readiness_hint(spec)}, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -210,6 +227,10 @@ def build_parser() -> argparse.ArgumentParser:
     workflow = sub.add_parser("workflow", help="score workflow agent surface area and governance load")
     workflow.add_argument("input")
     workflow.set_defaults(func=_workflow)
+
+    simulator = sub.add_parser("simulator", help="score organization simulator complexity")
+    simulator.add_argument("input")
+    simulator.set_defaults(func=_simulator)
 
     return parser
 
