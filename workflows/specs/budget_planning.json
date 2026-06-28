@@ -1,0 +1,11 @@
+{
+  "name": "budget_planning",
+  "department": "finance",
+  "human_steps": ["set priorities", "approve allocations", "resolve tradeoffs", "communicate final budget"],
+  "agent_steps": ["retrieve assumptions", "draft scenarios", "flag missing inputs", "track approvals"],
+  "shared_steps": ["scenario review", "department budget review", "variance explanation", "forecast revision"],
+  "memory_events": ["budget assumption logged", "scenario rationale recorded", "approval captured", "revision reason saved"],
+  "governance_points": ["budget approval", "forecast approval", "material change approval"],
+  "metrics": ["planning cycle time", "forecast accuracy", "approval latency", "assumption traceability"],
+  "risks": ["wrong assumptions", "weak audit trail", "overconfident forecast"]
+}
