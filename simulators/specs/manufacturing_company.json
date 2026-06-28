@@ -1,0 +1,10 @@
+{
+  "name": "manufacturing_company",
+  "organization_type": "manufacturing",
+  "departments": ["operations", "finance", "customer_support", "engineering", "legal_compliance", "hr"],
+  "agents": ["Workflow Orchestration Agent", "Incident Agent", "Knowledge Agent", "Finance Analyst Agent", "Compliance Agent", "Analytics Agent"],
+  "workflows": ["vendor_onboarding", "incident_response", "knowledge_management", "budget_planning", "customer_onboarding"],
+  "memory_types": ["process memory", "vendor memory", "incident memory", "policy memory", "quality issue memory"],
+  "governance_rules": ["process change approval", "vendor finance review", "strict incident audit", "customer commitment approval"],
+  "metrics": ["incident repeat rate", "vendor onboarding time", "sop freshness", "quality issue recurrence", "approval latency"]
+}
