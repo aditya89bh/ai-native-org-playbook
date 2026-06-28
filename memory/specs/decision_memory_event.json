@@ -1,0 +1,15 @@
+{
+  "event_id": "mem_decision_001",
+  "timestamp": "2026-01-15T10:00:00Z",
+  "source": "product_review_notes",
+  "actor": "product_lead",
+  "department": "product",
+  "workflow": "product_discovery",
+  "memory_type": "decision",
+  "summary": "Prioritize onboarding analytics before advanced dashboard customization.",
+  "evidence": ["customer feedback cluster", "support tickets", "roadmap review"],
+  "confidence": 0.88,
+  "retention_tier": "decision",
+  "access_scope": "department",
+  "correction_status": "active"
+}
