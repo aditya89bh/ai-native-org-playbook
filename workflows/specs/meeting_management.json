@@ -1,0 +1,11 @@
+{
+  "name": "meeting_management",
+  "department": "operations",
+  "human_steps": ["set purpose", "make decisions", "resolve disagreements", "approve sensitive notes"],
+  "agent_steps": ["draft agenda", "retrieve prior context", "summarize decisions", "track action items"],
+  "shared_steps": ["pre read preparation", "meeting facilitation", "decision review", "follow up tracking"],
+  "memory_events": ["agenda created", "decision captured", "action item assigned", "summary saved"],
+  "governance_points": ["decision approval", "sensitive summary approval", "external sharing approval"],
+  "metrics": ["decision clarity", "follow up completion", "meeting load", "context reuse"],
+  "risks": ["incorrect decision capture", "oversharing", "ownership ambiguity"]
+}
