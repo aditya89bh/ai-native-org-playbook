@@ -1,0 +1,10 @@
+{
+  "name": "university",
+  "organization_type": "higher_education",
+  "departments": ["operations", "research", "hr", "finance", "student_support", "academic_departments"],
+  "agents": ["Knowledge Agent", "Research Agent", "Planning Agent", "Customer Support Agent", "Compliance Agent", "Analytics Agent"],
+  "workflows": ["meeting_management", "knowledge_management", "budget_planning", "vendor_onboarding", "customer_onboarding"],
+  "memory_types": ["policy memory", "student support memory", "research memory", "curriculum decision memory", "partnership memory"],
+  "governance_rules": ["student data restriction", "faculty review", "policy citation", "academic decision approval"],
+  "metrics": ["student response time", "research administration cycle time", "policy retrieval quality", "partnership handoff quality"]
+}
