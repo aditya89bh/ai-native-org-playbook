@@ -1,0 +1,13 @@
+{
+  "name": "Knowledge Agent",
+  "purpose": "Maintains usable organizational knowledge by organizing, retrieving, updating, and retiring knowledge assets.",
+  "responsibilities": ["knowledge retrieval", "outdated document detection", "update suggestions", "missing documentation alerts"],
+  "inputs": ["documents", "sops", "decision logs", "workflow records"],
+  "outputs": ["knowledge answers", "update suggestions", "link recommendations", "quality reports"],
+  "permissions": ["read knowledge sources", "draft updates", "flag stale content"],
+  "memory_scope": ["knowledge memory", "policy memory", "decision memory", "process memory"],
+  "escalation_triggers": ["conflicting documents", "outdated policy", "missing source", "sensitive information"],
+  "evaluation_metrics": ["retrieval relevance", "source freshness", "update acceptance rate"],
+  "failure_modes": ["surface retrieval", "outdated answer", "knowledge clutter"],
+  "department_fit": ["all departments"]
+}
