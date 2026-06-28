@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 
 from .agent_roles import AgentRoleSpec, role_operational_depth
+from .assessment_reports import build_roadmap_report
 from .decision_rights import recommend_decision_level
 from .departments import DepartmentSpec, department_complexity
 from .governance import GovernanceRisk, approval_mode, governance_risk_score
@@ -164,6 +165,15 @@ def _simulator(args: argparse.Namespace) -> int:
     return 0
 
 
+def _roadmap(args: argparse.Namespace) -> int:
+    report = build_roadmap_report(args.readiness_score, args.governance_risk)
+    if args.output:
+        Path(args.output).write_text(report, encoding="utf-8")
+    else:
+        print(report, end="")
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -231,6 +241,12 @@ def build_parser() -> argparse.ArgumentParser:
     simulator = sub.add_parser("simulator", help="score organization simulator complexity")
     simulator.add_argument("input")
     simulator.set_defaults(func=_simulator)
+
+    roadmap = sub.add_parser("roadmap", help="generate a transformation roadmap report")
+    roadmap.add_argument("--readiness-score", type=float, required=True)
+    roadmap.add_argument("--governance-risk", type=int, required=True)
+    roadmap.add_argument("--output")
+    roadmap.set_defaults(func=_roadmap)
 
     return parser
 
