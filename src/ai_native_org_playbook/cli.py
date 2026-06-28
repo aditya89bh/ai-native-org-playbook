@@ -9,8 +9,10 @@ from pathlib import Path
 from .agent_roles import AgentRoleSpec, role_operational_depth
 from .decision_rights import recommend_decision_level
 from .departments import DepartmentSpec, department_complexity
+from .governance import GovernanceRisk, approval_mode, governance_risk_score
 from .maturity import score_capabilities
 from .memory_map import recommend_memory_types
+from .memory_policy import retention_days, should_require_review
 from .opportunity import OpportunityFactors, opportunity_band, score_agent_opportunity
 from .pilot import PilotCandidate, pilot_band, pilot_score
 from .readiness import readiness_band, readiness_score
@@ -44,6 +46,13 @@ def _memory_map(args: argparse.Namespace) -> int:
     return 0
 
 
+def _memory_policy(args: argparse.Namespace) -> int:
+    days = retention_days(args.tier)
+    review = should_require_review(args.tier, args.confidence, args.sensitive)
+    print(json.dumps({"tier": args.tier, "retention_days": days, "requires_review": review}, indent=2))
+    return 0
+
+
 def _readiness(args: argparse.Namespace) -> int:
     data = json.loads(Path(args.input).read_text(encoding="utf-8"))
     score = readiness_score({key: int(value) for key, value in data.items()})
@@ -72,6 +81,21 @@ def _decision_rights(args: argparse.Namespace) -> int:
         confidence=args.confidence,
     )
     print(json.dumps({"recommended_decision_right": level}, indent=2))
+    return 0
+
+
+def _governance(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    risk = GovernanceRisk(
+        financial_impact=int(data["financial_impact"]),
+        customer_impact=int(data["customer_impact"]),
+        employee_impact=int(data["employee_impact"]),
+        legal_exposure=int(data["legal_exposure"]),
+        reversibility=int(data["reversibility"]),
+        public_visibility=int(data["public_visibility"]),
+    )
+    score = governance_risk_score(risk)
+    print(json.dumps({"action": data.get("action"), "risk_score": score, "approval_mode": approval_mode(score)}, indent=2))
     return 0
 
 
@@ -119,16 +143,7 @@ def _workflow(args: argparse.Namespace) -> int:
         metrics=tuple(data["metrics"]),
         risks=tuple(data["risks"]),
     )
-    print(
-        json.dumps(
-            {
-                "workflow": spec.name,
-                "agent_surface_area": workflow_agent_surface_area(spec),
-                "governance_load": workflow_governance_load(spec),
-            },
-            indent=2,
-        )
-    )
+    print(json.dumps({"workflow": spec.name, "agent_surface_area": workflow_agent_surface_area(spec), "governance_load": workflow_governance_load(spec)}, indent=2))
     return 0
 
 
@@ -137,7 +152,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub = parser.add_subparsers(dest="command", required=True)
 
     maturity = sub.add_parser("maturity", help="score organization maturity from JSON")
-    maturity.add_argument("input", help="path to maturity score JSON")
+    maturity.add_argument("input")
     maturity.set_defaults(func=_score_maturity)
 
     opportunity = sub.add_parser("opportunity", help="score a workflow agent opportunity")
@@ -155,8 +170,14 @@ def build_parser() -> argparse.ArgumentParser:
     memory.add_argument("--customer-facing", action="store_true")
     memory.set_defaults(func=_memory_map)
 
+    memory_policy = sub.add_parser("memory-policy", help="evaluate memory retention and review")
+    memory_policy.add_argument("--tier", required=True)
+    memory_policy.add_argument("--confidence", type=float, required=True)
+    memory_policy.add_argument("--sensitive", action="store_true")
+    memory_policy.set_defaults(func=_memory_policy)
+
     readiness = sub.add_parser("readiness", help="score organization readiness from JSON")
-    readiness.add_argument("input", help="path to readiness score JSON")
+    readiness.add_argument("input")
     readiness.set_defaults(func=_readiness)
 
     pilot = sub.add_parser("pilot", help="score an AI-native pilot candidate")
@@ -174,16 +195,20 @@ def build_parser() -> argparse.ArgumentParser:
     decision.add_argument("--confidence", type=int, required=True)
     decision.set_defaults(func=_decision_rights)
 
+    governance = sub.add_parser("governance", help="score governance risk from JSON")
+    governance.add_argument("input")
+    governance.set_defaults(func=_governance)
+
     department = sub.add_parser("department", help="score department redesign complexity")
-    department.add_argument("input", help="path to department spec JSON")
+    department.add_argument("input")
     department.set_defaults(func=_department)
 
     role = sub.add_parser("agent-role", help="score agent role operational depth")
-    role.add_argument("input", help="path to agent role spec JSON")
+    role.add_argument("input")
     role.set_defaults(func=_agent_role)
 
     workflow = sub.add_parser("workflow", help="score workflow agent surface area and governance load")
-    workflow.add_argument("input", help="path to workflow spec JSON")
+    workflow.add_argument("input")
     workflow.set_defaults(func=_workflow)
 
     return parser
