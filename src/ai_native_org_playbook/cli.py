@@ -6,9 +6,12 @@ import argparse
 import json
 from pathlib import Path
 
+from .decision_rights import recommend_decision_level
 from .maturity import score_capabilities
 from .memory_map import recommend_memory_types
 from .opportunity import OpportunityFactors, opportunity_band, score_agent_opportunity
+from .pilot import PilotCandidate, pilot_band, pilot_score
+from .readiness import readiness_band, readiness_score
 
 
 def _score_maturity(args: argparse.Namespace) -> int:
@@ -38,6 +41,37 @@ def _memory_map(args: argparse.Namespace) -> int:
     return 0
 
 
+def _readiness(args: argparse.Namespace) -> int:
+    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    score = readiness_score({key: int(value) for key, value in data.items()})
+    print(json.dumps({"score": round(score, 2), "band": readiness_band(score)}, indent=2))
+    return 0
+
+
+def _pilot(args: argparse.Namespace) -> int:
+    candidate = PilotCandidate(
+        value=args.value,
+        feasibility=args.feasibility,
+        risk=args.risk,
+        measurability=args.measurability,
+        sponsor_quality=args.sponsor_quality,
+    )
+    score = pilot_score(candidate)
+    print(json.dumps({"score": score, "band": pilot_band(score)}, indent=2))
+    return 0
+
+
+def _decision_rights(args: argparse.Namespace) -> int:
+    level = recommend_decision_level(
+        risk=args.risk,
+        reversibility=args.reversibility,
+        ambiguity=args.ambiguity,
+        confidence=args.confidence,
+    )
+    print(json.dumps({"recommended_decision_right": level}, indent=2))
+    return 0
+
+
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="AI-native organization playbook tools")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -60,6 +94,25 @@ def build_parser() -> argparse.ArgumentParser:
     memory.add_argument("--risk", choices=["low", "medium", "high"], required=True)
     memory.add_argument("--customer-facing", action="store_true")
     memory.set_defaults(func=_memory_map)
+
+    readiness = sub.add_parser("readiness", help="score organization readiness from JSON")
+    readiness.add_argument("input", help="path to readiness score JSON")
+    readiness.set_defaults(func=_readiness)
+
+    pilot = sub.add_parser("pilot", help="score an AI-native pilot candidate")
+    pilot.add_argument("--value", type=int, required=True)
+    pilot.add_argument("--feasibility", type=int, required=True)
+    pilot.add_argument("--risk", type=int, required=True)
+    pilot.add_argument("--measurability", type=int, required=True)
+    pilot.add_argument("--sponsor-quality", type=int, required=True)
+    pilot.set_defaults(func=_pilot)
+
+    decision = sub.add_parser("decision-rights", help="recommend agent decision rights")
+    decision.add_argument("--risk", type=int, required=True)
+    decision.add_argument("--reversibility", type=int, required=True)
+    decision.add_argument("--ambiguity", type=int, required=True)
+    decision.add_argument("--confidence", type=int, required=True)
+    decision.set_defaults(func=_decision_rights)
 
     return parser
 
