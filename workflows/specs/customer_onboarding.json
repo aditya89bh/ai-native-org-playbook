@@ -1,0 +1,11 @@
+{
+  "name": "customer_onboarding",
+  "department": "customer_support",
+  "human_steps": ["align expectations", "resolve sensitive blockers", "approve success plan", "manage executive relationships"],
+  "agent_steps": ["draft onboarding plan", "track checklist completion", "summarize kickoff notes", "flag unresolved risks"],
+  "shared_steps": ["kickoff preparation", "success plan creation", "training coordination", "handoff review"],
+  "memory_events": ["customer goals captured", "requirements recorded", "risk notes updated", "success plan logged"],
+  "governance_points": ["customer commitment approval", "timeline change approval", "commercial exception approval"],
+  "metrics": ["time to value", "checklist completion", "risk detection rate", "handoff quality"],
+  "risks": ["misstated commitments", "incomplete context", "poor handoff"]
+}
