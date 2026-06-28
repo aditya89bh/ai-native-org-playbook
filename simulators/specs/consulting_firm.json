@@ -1,0 +1,10 @@
+{
+  "name": "consulting_firm",
+  "organization_type": "professional_services",
+  "departments": ["sales", "research", "operations", "finance", "hr", "delivery"],
+  "agents": ["Research Agent", "Knowledge Agent", "Chief of Staff Agent", "Planning Agent", "Analytics Agent", "Compliance Agent"],
+  "workflows": ["sales_pipeline", "meeting_management", "knowledge_management", "budget_planning", "vendor_onboarding"],
+  "memory_types": ["client memory", "proposal memory", "project memory", "decision memory", "knowledge memory"],
+  "governance_rules": ["partner review", "pricing approval", "confidential client scope", "case study permission"],
+  "metrics": ["proposal cycle time", "research reuse", "margin visibility", "knowledge freshness", "client follow up quality"]
+}
