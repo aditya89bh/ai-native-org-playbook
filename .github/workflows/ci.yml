@@ -25,3 +25,5 @@ jobs:
         run: mypy src
       - name: Test
         run: pytest
+      - name: Build package
+        run: python -m build
