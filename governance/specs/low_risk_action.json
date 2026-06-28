@@ -1,0 +1,12 @@
+{
+  "action": "update_internal_status_summary",
+  "department": "operations",
+  "workflow": "meeting_management",
+  "financial_impact": 0,
+  "customer_impact": 0,
+  "employee_impact": 0,
+  "legal_exposure": 0,
+  "reversibility": 5,
+  "public_visibility": 0,
+  "recommended_approval": "no_approval"
+}
