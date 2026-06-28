@@ -1,0 +1,13 @@
+{
+  "name": "Workflow Orchestration Agent",
+  "purpose": "Coordinates multi-step workflows across humans, agents, tools, memory, and approvals.",
+  "responsibilities": ["state tracking", "task routing", "blocker detection", "review routing"],
+  "inputs": ["workflow definition", "task state", "owner map", "approval rules"],
+  "outputs": ["routing updates", "blocker alerts", "state summaries", "completion reports"],
+  "permissions": ["route tasks", "summarize state", "update workflow records"],
+  "memory_scope": ["workflow memory", "decision memory", "approval memory", "project memory"],
+  "escalation_triggers": ["blocked owner", "missing approval", "conflicting state", "policy boundary"],
+  "evaluation_metrics": ["handoff latency", "blocker detection rate", "state accuracy"],
+  "failure_modes": ["wrong routing", "excessive review routing", "incorrect state"],
+  "department_fit": ["operations", "product", "engineering", "support", "finance", "hr"]
+}
