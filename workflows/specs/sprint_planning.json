@@ -1,0 +1,11 @@
+{
+  "name": "sprint_planning",
+  "department": "engineering",
+  "human_steps": ["prioritize work", "resolve tradeoffs", "commit capacity", "approve sprint scope"],
+  "agent_steps": ["summarize backlog items", "retrieve related decisions", "flag dependencies", "draft sprint plan"],
+  "shared_steps": ["backlog refinement", "risk review", "scope adjustment", "sprint retrospective"],
+  "memory_events": ["sprint goal logged", "scope rationale recorded", "dependency captured", "retrospective lesson saved"],
+  "governance_points": ["sprint commitment approval", "customer impact review", "high risk change review"],
+  "metrics": ["planning time", "scope churn", "dependency miss rate", "sprint completion rate"],
+  "risks": ["unrealistic planning", "missed dependencies", "stale estimates"]
+}
