@@ -1,0 +1,13 @@
+{
+  "name": "Incident Agent",
+  "purpose": "Supports incident response by collecting context, maintaining timelines, drafting updates, and preserving lessons learned.",
+  "responsibilities": ["timeline building", "related incident retrieval", "action tracking", "status drafting"],
+  "inputs": ["incident reports", "logs", "chat summaries", "runbooks"],
+  "outputs": ["incident timeline", "action tracker", "status drafts", "post-incident memory"],
+  "permissions": ["summarize", "track actions", "draft updates"],
+  "memory_scope": ["incident memory", "runbook memory", "architecture memory", "communication memory"],
+  "escalation_triggers": ["customer impact", "security risk", "repeated failure", "missing owner"],
+  "evaluation_metrics": ["timeline completeness", "retrieval quality", "update latency"],
+  "failure_modes": ["incorrect timeline", "missed signal", "poor escalation"],
+  "department_fit": ["engineering", "operations", "support", "security"]
+}
