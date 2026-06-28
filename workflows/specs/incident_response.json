@@ -1,0 +1,11 @@
+{
+  "name": "incident_response",
+  "department": "engineering",
+  "human_steps": ["declare severity", "assign commander", "approve customer communication", "approve resolution"],
+  "agent_steps": ["build timeline", "retrieve similar incidents", "track actions", "draft status updates"],
+  "shared_steps": ["triage", "mitigation tracking", "customer impact review", "postmortem drafting"],
+  "memory_events": ["incident declared", "timeline updated", "mitigation decision logged", "lesson learned saved"],
+  "governance_points": ["severity approval", "customer update approval", "production action approval"],
+  "metrics": ["time to detect", "time to mitigate", "update latency", "repeat incident rate"],
+  "risks": ["incorrect timeline", "missed signal", "communication error"]
+}
