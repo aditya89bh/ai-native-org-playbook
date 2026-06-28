@@ -1,0 +1,31 @@
+{
+  "name": "customer_support",
+  "recommended_agents": [
+    "Support Triage Agent",
+    "Reply Drafting Agent",
+    "Knowledge Retrieval Agent",
+    "Escalation Agent",
+    "Customer Memory Agent"
+  ],
+  "core_workflows": [
+    "ticket triage",
+    "customer reply",
+    "escalation handling",
+    "incident communication",
+    "knowledge base improvement"
+  ],
+  "memory_types": [
+    "customer memory",
+    "ticket memory",
+    "incident memory",
+    "policy memory",
+    "product feedback memory"
+  ],
+  "governance_level": "medium",
+  "metrics": [
+    "first response time",
+    "resolution time",
+    "escalation accuracy",
+    "customer satisfaction"
+  ]
+}
