@@ -1,0 +1,31 @@
+{
+  "name": "finance",
+  "recommended_agents": [
+    "Finance Analyst Agent",
+    "Budget Planning Agent",
+    "Procurement Review Agent",
+    "Control Monitoring Agent",
+    "Reporting Agent"
+  ],
+  "core_workflows": [
+    "monthly close",
+    "budget planning",
+    "forecast review",
+    "vendor approval",
+    "spend analysis"
+  ],
+  "memory_types": [
+    "budget decision memory",
+    "vendor memory",
+    "forecast assumption memory",
+    "control exception memory",
+    "policy memory"
+  ],
+  "governance_level": "high",
+  "metrics": [
+    "close cycle time",
+    "forecast accuracy",
+    "exception detection rate",
+    "approval latency"
+  ]
+}
