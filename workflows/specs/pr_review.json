@@ -1,0 +1,11 @@
+{
+  "name": "pr_review",
+  "department": "engineering",
+  "human_steps": ["judge correctness", "review architecture fit", "approve code", "own merge decision"],
+  "agent_steps": ["summarize diff", "link related issues", "retrieve prior decisions", "suggest missing tests"],
+  "shared_steps": ["risk review", "test review", "release note preparation", "post merge memory update"],
+  "memory_events": ["review rationale logged", "test gap recorded", "architecture note linked", "merge decision captured"],
+  "governance_points": ["merge approval", "production change approval", "security review"],
+  "metrics": ["review cycle time", "defect escape rate", "test gap detection", "reviewer load"],
+  "risks": ["low quality suggestions", "missed security issues", "weak ownership"]
+}
