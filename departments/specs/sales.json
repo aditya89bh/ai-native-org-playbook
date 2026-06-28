@@ -1,0 +1,31 @@
+{
+  "name": "sales",
+  "recommended_agents": [
+    "Account Research Agent",
+    "CRM Hygiene Agent",
+    "Follow-Up Agent",
+    "Pipeline Review Agent",
+    "Customer Memory Agent"
+  ],
+  "core_workflows": [
+    "prospect qualification",
+    "discovery preparation",
+    "proposal generation",
+    "pipeline review",
+    "account handoff"
+  ],
+  "memory_types": [
+    "account memory",
+    "conversation memory",
+    "objection memory",
+    "proposal memory",
+    "decision memory"
+  ],
+  "governance_level": "medium",
+  "metrics": [
+    "lead response time",
+    "crm completeness",
+    "pipeline accuracy",
+    "follow-up quality"
+  ]
+}
