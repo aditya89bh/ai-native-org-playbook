@@ -7,9 +7,11 @@ Use this checklist before tagging a release.
 - `pytest` passes
 - `ruff check .` passes
 - `mypy src` passes
-- Package installs locally
+- `python -m build` passes
+- `mkdocs build --strict` passes
 - CLI commands run against examples
-- MkDocs builds successfully
+- JSON spec smoke tests pass
+- MkDocs navigation target test passes
 
 ## Documentation gates
 
@@ -18,7 +20,9 @@ Use this checklist before tagging a release.
 - CLI reference is complete
 - Examples gallery is current
 - Consulting guide is usable
+- Organization assessment guide is usable
 - Release notes are updated
+- Limitations are stated clearly
 
 ## Product gates
 
@@ -26,7 +30,7 @@ Use this checklist before tagging a release.
 - Templates are easy to copy
 - JSON specs are valid
 - Reports are deterministic
-- Limitations are stated clearly
+- Department, workflow, role, simulator, memory, and governance layers connect clearly
 
 ## Release steps
 
@@ -38,7 +42,7 @@ mkdocs build --strict
 python -m build
 ```
 
-Then tag:
+Then tag only after checks are green:
 
 ```bash
 git tag -a v0.1.0 -m "ai-native-org-playbook v0.1.0"
