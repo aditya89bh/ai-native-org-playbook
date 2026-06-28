@@ -1,0 +1,13 @@
+{
+  "name": "Product Feedback Agent",
+  "purpose": "Turns customer feedback, support tickets, calls, and usage signals into structured product insight.",
+  "responsibilities": ["feedback clustering", "roadmap linking", "evidence summary", "discovery note drafting"],
+  "inputs": ["support tickets", "sales notes", "customer interviews", "usage metrics"],
+  "outputs": ["feedback clusters", "opportunity notes", "evidence summaries", "discovery questions"],
+  "permissions": ["tag feedback", "draft notes", "link evidence"],
+  "memory_scope": ["customer feedback memory", "product decision memory", "roadmap memory", "experiment memory"],
+  "escalation_triggers": ["major customer risk", "conflicting evidence", "missing source", "issue spike"],
+  "evaluation_metrics": ["cluster quality", "evidence traceability", "product manager acceptance rate"],
+  "failure_modes": ["over-generalizing feedback", "missing minority signals", "weak source traceability"],
+  "department_fit": ["product", "support", "sales", "research"]
+}
