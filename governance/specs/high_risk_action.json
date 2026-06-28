@@ -1,0 +1,12 @@
+{
+  "action": "approve_vendor_contract",
+  "department": "operations",
+  "workflow": "vendor_onboarding",
+  "financial_impact": 5,
+  "customer_impact": 2,
+  "employee_impact": 1,
+  "legal_exposure": 4,
+  "reversibility": 1,
+  "public_visibility": 1,
+  "recommended_approval": "pre_approval"
+}
