@@ -1,0 +1,11 @@
+{
+  "workflow_clarity": 4,
+  "data_quality": 3,
+  "documentation_maturity": 3,
+  "governance_maturity": 3,
+  "access_control": 4,
+  "memory_architecture": 3,
+  "review_capacity": 4,
+  "measurement_discipline": 3,
+  "change_management": 4
+}
