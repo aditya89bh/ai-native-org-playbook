@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 from pathlib import Path
+from typing import Any
 
 from .agent_roles import AgentRoleSpec, role_operational_depth
 from .assessment_reports import build_roadmap_report
@@ -21,10 +22,21 @@ from .simulators import SimulatorSpec, simulator_complexity, simulator_readiness
 from .workflows import WorkflowSpec, workflow_agent_surface_area, workflow_governance_load
 
 
+def _load_json(path: str) -> dict[str, Any]:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("expected a JSON object")
+    return data
+
+
+def _print_json(payload: dict[str, Any]) -> None:
+    print(json.dumps(payload, indent=2))
+
+
 def _score_maturity(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     score, level = score_capabilities({key: int(value) for key, value in data.items()})
-    print(json.dumps({"score": round(score, 2), "level": level.value}, indent=2))
+    _print_json({"score": round(score, 2), "level": level.value})
     return 0
 
 
@@ -38,27 +50,33 @@ def _score_opportunity(args: argparse.Namespace) -> int:
         data_quality=args.data_quality,
     )
     score = score_agent_opportunity(factors)
-    print(json.dumps({"score": score, "band": opportunity_band(score)}, indent=2))
+    _print_json({"score": score, "band": opportunity_band(score)})
     return 0
 
 
 def _memory_map(args: argparse.Namespace) -> int:
     memories = recommend_memory_types(args.workflow, args.risk, args.customer_facing)
-    print(json.dumps({"workflow": args.workflow, "recommended_memory": memories}, indent=2))
+    _print_json({"workflow": args.workflow, "recommended_memory": memories})
     return 0
 
 
 def _memory_policy(args: argparse.Namespace) -> int:
     days = retention_days(args.tier)
     review = should_require_review(args.tier, args.confidence, args.sensitive)
-    print(json.dumps({"tier": args.tier, "retention_days": days, "requires_review": review}, indent=2))
+    _print_json(
+        {
+            "tier": args.tier,
+            "retention_days": days,
+            "requires_review": review,
+        }
+    )
     return 0
 
 
 def _readiness(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     score = readiness_score({key: int(value) for key, value in data.items()})
-    print(json.dumps({"score": round(score, 2), "band": readiness_band(score)}, indent=2))
+    _print_json({"score": round(score, 2), "band": readiness_band(score)})
     return 0
 
 
@@ -71,7 +89,7 @@ def _pilot(args: argparse.Namespace) -> int:
         sponsor_quality=args.sponsor_quality,
     )
     score = pilot_score(candidate)
-    print(json.dumps({"score": score, "band": pilot_band(score)}, indent=2))
+    _print_json({"score": score, "band": pilot_band(score)})
     return 0
 
 
@@ -82,12 +100,12 @@ def _decision_rights(args: argparse.Namespace) -> int:
         ambiguity=args.ambiguity,
         confidence=args.confidence,
     )
-    print(json.dumps({"recommended_decision_right": level}, indent=2))
+    _print_json({"recommended_decision_right": level})
     return 0
 
 
 def _governance(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     risk = GovernanceRisk(
         financial_impact=int(data["financial_impact"]),
         customer_impact=int(data["customer_impact"]),
@@ -97,12 +115,18 @@ def _governance(args: argparse.Namespace) -> int:
         public_visibility=int(data["public_visibility"]),
     )
     score = governance_risk_score(risk)
-    print(json.dumps({"action": data.get("action"), "risk_score": score, "approval_mode": approval_mode(score)}, indent=2))
+    _print_json(
+        {
+            "action": data.get("action"),
+            "risk_score": score,
+            "approval_mode": approval_mode(score),
+        }
+    )
     return 0
 
 
 def _department(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     spec = DepartmentSpec(
         name=str(data["name"]),
         recommended_agents=tuple(data["recommended_agents"]),
@@ -111,12 +135,12 @@ def _department(args: argparse.Namespace) -> int:
         governance_level=str(data["governance_level"]),
         metrics=tuple(data["metrics"]),
     )
-    print(json.dumps({"department": spec.name, "complexity": department_complexity(spec)}, indent=2))
+    _print_json({"department": spec.name, "complexity": department_complexity(spec)})
     return 0
 
 
 def _agent_role(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     spec = AgentRoleSpec(
         name=str(data["name"]),
         responsibilities=tuple(data["responsibilities"]),
@@ -128,12 +152,17 @@ def _agent_role(args: argparse.Namespace) -> int:
         evaluation_metrics=tuple(data["evaluation_metrics"]),
         department_fit=tuple(data["department_fit"]),
     )
-    print(json.dumps({"agent_role": spec.name, "operational_depth": role_operational_depth(spec)}, indent=2))
+    _print_json(
+        {
+            "agent_role": spec.name,
+            "operational_depth": role_operational_depth(spec),
+        }
+    )
     return 0
 
 
 def _workflow(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     spec = WorkflowSpec(
         name=str(data["name"]),
         department=str(data["department"]),
@@ -145,12 +174,18 @@ def _workflow(args: argparse.Namespace) -> int:
         metrics=tuple(data["metrics"]),
         risks=tuple(data["risks"]),
     )
-    print(json.dumps({"workflow": spec.name, "agent_surface_area": workflow_agent_surface_area(spec), "governance_load": workflow_governance_load(spec)}, indent=2))
+    _print_json(
+        {
+            "workflow": spec.name,
+            "agent_surface_area": workflow_agent_surface_area(spec),
+            "governance_load": workflow_governance_load(spec),
+        }
+    )
     return 0
 
 
 def _simulator(args: argparse.Namespace) -> int:
-    data = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    data = _load_json(args.input)
     spec = SimulatorSpec(
         name=str(data["name"]),
         organization_type=str(data["organization_type"]),
@@ -161,7 +196,13 @@ def _simulator(args: argparse.Namespace) -> int:
         governance_rules=tuple(data["governance_rules"]),
         metrics=tuple(data["metrics"]),
     )
-    print(json.dumps({"simulator": spec.name, "complexity": simulator_complexity(spec), "readiness_hint": simulator_readiness_hint(spec)}, indent=2))
+    _print_json(
+        {
+            "simulator": spec.name,
+            "complexity": simulator_complexity(spec),
+            "readiness_hint": simulator_readiness_hint(spec),
+        }
+    )
     return 0
 
 
@@ -191,19 +232,19 @@ def build_parser() -> argparse.ArgumentParser:
     opportunity.add_argument("--data-quality", type=int, required=True)
     opportunity.set_defaults(func=_score_opportunity)
 
-    memory = sub.add_parser("memory-map", help="recommend memory layers for a workflow")
+    memory = sub.add_parser("memory-map", help="recommend memory layers")
     memory.add_argument("workflow")
     memory.add_argument("--risk", choices=["low", "medium", "high"], required=True)
     memory.add_argument("--customer-facing", action="store_true")
     memory.set_defaults(func=_memory_map)
 
-    memory_policy = sub.add_parser("memory-policy", help="evaluate memory retention and review")
+    memory_policy = sub.add_parser("memory-policy", help="evaluate memory policy")
     memory_policy.add_argument("--tier", required=True)
     memory_policy.add_argument("--confidence", type=float, required=True)
     memory_policy.add_argument("--sensitive", action="store_true")
     memory_policy.set_defaults(func=_memory_policy)
 
-    readiness = sub.add_parser("readiness", help="score organization readiness from JSON")
+    readiness = sub.add_parser("readiness", help="score organization readiness")
     readiness.add_argument("input")
     readiness.set_defaults(func=_readiness)
 
@@ -215,34 +256,34 @@ def build_parser() -> argparse.ArgumentParser:
     pilot.add_argument("--sponsor-quality", type=int, required=True)
     pilot.set_defaults(func=_pilot)
 
-    decision = sub.add_parser("decision-rights", help="recommend agent decision rights")
+    decision = sub.add_parser("decision-rights", help="recommend agent rights")
     decision.add_argument("--risk", type=int, required=True)
     decision.add_argument("--reversibility", type=int, required=True)
     decision.add_argument("--ambiguity", type=int, required=True)
     decision.add_argument("--confidence", type=int, required=True)
     decision.set_defaults(func=_decision_rights)
 
-    governance = sub.add_parser("governance", help="score governance risk from JSON")
+    governance = sub.add_parser("governance", help="score governance risk")
     governance.add_argument("input")
     governance.set_defaults(func=_governance)
 
-    department = sub.add_parser("department", help="score department redesign complexity")
+    department = sub.add_parser("department", help="score department complexity")
     department.add_argument("input")
     department.set_defaults(func=_department)
 
-    role = sub.add_parser("agent-role", help="score agent role operational depth")
+    role = sub.add_parser("agent-role", help="score agent role depth")
     role.add_argument("input")
     role.set_defaults(func=_agent_role)
 
-    workflow = sub.add_parser("workflow", help="score workflow agent surface area and governance load")
+    workflow = sub.add_parser("workflow", help="score workflow surface area")
     workflow.add_argument("input")
     workflow.set_defaults(func=_workflow)
 
-    simulator = sub.add_parser("simulator", help="score organization simulator complexity")
+    simulator = sub.add_parser("simulator", help="score simulator complexity")
     simulator.add_argument("input")
     simulator.set_defaults(func=_simulator)
 
-    roadmap = sub.add_parser("roadmap", help="generate a transformation roadmap report")
+    roadmap = sub.add_parser("roadmap", help="generate roadmap report")
     roadmap.add_argument("--readiness-score", type=float, required=True)
     roadmap.add_argument("--governance-risk", type=int, required=True)
     roadmap.add_argument("--output")
