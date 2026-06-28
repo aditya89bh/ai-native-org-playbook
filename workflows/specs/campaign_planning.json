@@ -1,0 +1,11 @@
+{
+  "name": "campaign_planning",
+  "department": "marketing",
+  "human_steps": ["define strategy", "approve positioning", "own brand judgment", "allocate budget"],
+  "agent_steps": ["draft campaign brief", "summarize audience research", "generate checklist", "track experiments"],
+  "shared_steps": ["creative review", "launch checklist", "performance review", "experiment retrospective"],
+  "memory_events": ["campaign brief saved", "positioning decision logged", "experiment recorded", "lesson reused"],
+  "governance_points": ["public messaging approval", "brand claim approval", "regulated topic review"],
+  "metrics": ["campaign cycle time", "content throughput", "experiment reuse", "lead quality"],
+  "risks": ["generic content", "unsupported claims", "off brand messaging"]
+}
