@@ -1,0 +1,13 @@
+{
+  "name": "Memory Agent",
+  "purpose": "Captures, retrieves, corrects, and expires organizational memory.",
+  "responsibilities": ["capture events", "retrieve context", "apply corrections", "enforce retention"],
+  "inputs": ["workflow events", "decisions", "meeting notes", "queries"],
+  "outputs": ["memory records", "retrieval results", "correction logs", "expiry notices"],
+  "permissions": ["read memory", "draft memory updates", "flag stale records"],
+  "memory_scope": ["decision memory", "meeting memory", "project memory", "policy memory"],
+  "escalation_triggers": ["conflicting memory", "sensitive data", "low confidence"],
+  "evaluation_metrics": ["retrieval relevance", "correction rate", "reuse rate"],
+  "failure_modes": ["stale retrieval", "over-capture", "poor source traceability"],
+  "department_fit": ["all departments"]
+}
